@@ -1,7 +1,17 @@
-import sumar from "./sumador.js";
+import calcular from "./CalculoCambio.js";
+import fs from "fs";
 
-describe("Sumar", () => {
-  it("deberia sumar dos numeros", () => {
-    expect(sumar(3, 2)).toEqual(5);
+describe("Mostrar cambio", () => {
+  beforeAll(() => {
+    document.body.innerHTML = fs.readFileSync("index.html", "utf8");
+    require("./presenter.js");
   });
-});
+
+  it("Mostrar el cambio despues de presionar el boton de 'cambio'", () => {
+    let botonCambio = document.querySelector("#botoncambio");
+    const div = document.querySelector("#resultado-div");
+    botonCambio.click();
+    
+    expect(div.innerHTML).toEqual("<p> Cambio: NaN Bs.</p>");
+  });
+}); 
