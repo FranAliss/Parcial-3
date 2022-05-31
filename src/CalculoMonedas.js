@@ -1,13 +1,27 @@
 function calcularMonedas(cantidad){
-    let arrayCambio = [];
-    let cont = 0;
+    let arrayC = [];
     while(cantidad>0)
     {
-        cantidad = cantidad - 5;
-        arrayCambio.push(5);
-        cont++;
+        if(cantidad>5)
+        {
+            cantidad = cantidad - 5;
+            arrayC.push(5);
+        }
+        else
+        {
+            if(cantidad>2)
+            {
+                cantidad = cantidad - 2;
+                arrayC.push(2);
+            }
+            else
+            {
+                cantidad = cantidad - 1;
+                arrayC.push(1);
+            }
+        }
     }
-    return arrayCambio;
+    return arrayC;
 }
 
 export default calcularMonedas;
